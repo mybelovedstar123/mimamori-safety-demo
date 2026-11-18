@@ -1,0 +1,98 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Noto Sans JP', system-ui, -apple-system, 'Segoe UI', 'Hiragino Sans', 'Yu Gothic UI', sans-serif;
+
+  --color-brand-50: #effaf8;
+  --color-brand-100: #d5f1ec;
+  --color-brand-200: #abe2d9;
+  --color-brand-300: #77cbbf;
+  --color-brand-400: #46ada1;
+  --color-brand-500: #2a9184;
+  --color-brand-600: #1f756c;
+  --color-brand-700: #1b5f58;
+  --color-brand-800: #194c47;
+  --color-brand-900: #163f3c;
+  --color-brand-950: #0b2624;
+
+  --color-canvas: #f5f6f3;
+  --color-ink: #1c2321;
+  --color-ink-soft: #4b5552;
+  --color-ink-muted: #7c8582;
+  --color-line: #e3e6e2;
+
+  /* 状態色（アイコン・ラベルと必ず併用する） */
+  --color-st-safe: #0ca30c;
+  --color-st-support: #fab219;
+  --color-st-unreachable: #ec835a;
+  --color-st-emergency: #d03b3b;
+  --color-st-unconfirmed: #898781;
+
+  /* 回答経路（カテゴリ色） */
+  --color-src-line: #2a78d6;
+  --color-src-device: #eb6834;
+  --color-src-phone: #1baf7a;
+  --color-src-admin: #eda100;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-canvas text-ink antialiased;
+    font-feature-settings: 'palt' 1;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-brand-500;
+  }
+}
+
+@layer components {
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: #c9cfcb transparent;
+  }
+  .prod-stripes {
+    background-image: repeating-linear-gradient(-45deg, #b91c1c 0 14px, #991b1b 14px 28px);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgb(208 59 59 / 0.55);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgb(208 59 59 / 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgb(208 59 59 / 0);
+  }
+}
+.animate-pulse-ring {
+  animation: pulse-ring 1.8s ease-out infinite;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateY(8px);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+.animate-slide-in {
+  animation: slide-in 0.2s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-pulse-ring,
+  .animate-slide-in {
+    animation: none;
+  }
+}
