@@ -1,0 +1,9 @@
+node_modules
+dist
+.vercel
+*.log
+
+# 環境変数（実ファイルはコミットしない。.env.example のみ共有）
+.env
+.env*
+!.env.example
